@@ -4,7 +4,12 @@ import OtpInput from "./OtpInput";
 const PhoneOtpForm = () => {
    const [number,setNumber]=useState("")
    const [showoptpForm, setshowoptpForm] = useState(false)
-   const OtpSubmit = ()=>{console.log("hii")}
+   const checkOtp = "7979"
+   const OtpSubmit = (otp:string)=>{
+    if(otp===checkOtp){
+        console.log("login Successful with otp",otp)
+    }
+    }
     const handleNumber = ((e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()  
         console.log(number);
@@ -34,7 +39,7 @@ const PhoneOtpForm = () => {
         </form>:<div className="font-semi-bold pt-5">
              <p>OTP send to {number}</p>
 
-             <OtpInput length={4} onOtpSubmit={OtpSubmit} />
+             <OtpInput length={4} OtpSubmit={(otp:string)=>OtpSubmit(otp)} />
             </div>
         }
     </div> 
